@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'nokogiri'
-require_relative '../ebics'
+require_relative '../lib/ebics'
 
 class SchemaTest < Minitest::Test
   def setup
