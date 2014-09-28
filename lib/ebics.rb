@@ -8,7 +8,7 @@ module EBICS
   class Request
     def render_order_data(name)
       zipped_order_data = Zlib::Deflate.deflate raw_order_data(name)
-      Base64.encode64(zipped_order_data)
+      Base64.strict_encode64(zipped_order_data)
     end
 
     def raw_order_data(name)
@@ -81,11 +81,11 @@ module EBICS
     end
 
     def public_modulus
-      [@rsa.public_key.n.to_s(2)].pack 'm'
+      Base64.strict_encode64(@rsa.public_key.n.to_s(2))
     end
 
     def public_exponent
-      [@rsa.public_key.e.to_s(2)].pack 'm'
+      Base64.strict_encode64(@rsa.public_key.e.to_s(2))
     end
 
     def created_at
