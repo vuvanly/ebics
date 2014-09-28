@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ebicsUnsecuredRequest xmlns='urn:org:ebics:H004' Version="H004">
+  <header authenticate="true">
+    <static>
+      <HostID><%= @bank.host_id%></HostID>
+      <PartnerID><%= @user.partner_id %></PartnerID>
+      <UserID><%= @user.member_id %></UserID>
+      <Product Language="de">SOFORTwohnen Wohnraumverwaltung</Product>
+      <OrderDetails>
+        <OrderType>INI</OrderType>
+        <OrderAttribute>DZNNN</OrderAttribute>
+      </OrderDetails>
+      <SecurityMedium>0000</SecurityMedium>
+    </static>
+    <mutable/>
+  </header>
+  <body>
+    <DataTransfer>
+      <OrderData><%= render_order_data 'INI_order_data.xml'  %></OrderData>
+    </DataTransfer>
+  </body>
+</ebicsUnsecuredRequest>
