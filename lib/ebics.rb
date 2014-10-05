@@ -3,6 +3,7 @@ require 'base64'
 require 'erb'
 require 'openssl'
 require 'time'
+require 'digest/sha2'
 
 module EBICS
   class Request
@@ -86,6 +87,12 @@ module EBICS
 
     def public_exponent
       Base64.strict_encode64(@rsa.public_key.e.to_s(2))
+    end
+
+    def public_sha_256
+      public_key_string = "#{ @rsa.public_key.e.to_s(16) } #{ @rsa.public_key.n.to_s(16) }"
+      public_key_string.encode!('US-ASCII')
+      Digest::SHA256.hexdigest(public_key_string)
     end
 
     def created_at
