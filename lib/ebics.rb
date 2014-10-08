@@ -82,7 +82,7 @@ module EBICS
     end
 
     def public_modulus
-      Base64.strict_encode64(@rsa.public_key.n.to_s(2))
+      Base64.strict_encode64(@rsa.public_key.n.to_s(16))
     end
 
     def public_exponent
