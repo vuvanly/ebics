@@ -8,12 +8,12 @@ http://www.ebics.org/S001/ebics_signature.xsd">
     <SignaturePubKeyInfo>
         <PubKeyValue>
             <ds:RSAKeyValue>
-                <ds:Modulus><%= @user.key('a005').public_modulus %></ds:Modulus>
-                <ds:Exponent><%= @user.key('a005').public_exponent %></ds:Exponent>
+                <ds:Modulus><%= @user.key('a006').public_modulus %></ds:Modulus>
+                <ds:Exponent><%= @user.key('a006').public_exponent %></ds:Exponent>
             </ds:RSAKeyValue>
-            <TimeStamp><%= @user.key('a005').created_at %></TimeStamp>
+            <TimeStamp><%= @user.key('a006').created_at %></TimeStamp>
         </PubKeyValue>
-        <SignatureVersion>A005</SignatureVersion>
+        <SignatureVersion>A006</SignatureVersion>
     </SignaturePubKeyInfo>
     <PartnerID><%= @user.partner_id %></PartnerID>
     <UserID><%= @user.member_id %></UserID>
