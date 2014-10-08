@@ -1,15 +1,11 @@
-<?xmlversion="1.0"encoding="UTF-8"?>
-<HIARequestOrderData xmlns="urn:org:ebics:H004"
-xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="urn:org:ebics:H004 ebics_keymgmt_request_H004.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<HIARequestOrderData xmlns="http://www.ebics.org/H003" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xsi:schemaLocation="http://www.ebics.org/H003 http://www.ebics.org/H003/ebics_orders.xsd">
     <AuthenticationPubKeyInfo>
         <PubKeyValue>
             <ds:RSAKeyValue>
                 <ds:Modulus><%= @user.key('x002').public_modulus %></ds:Modulus>
                 <ds:Exponent><%= @user.key('x002').public_exponent %></ds:Exponent>
             </ds:RSAKeyValue>
-            <TimeStamp><%= @user.key('x002').created_at %></TimeStamp>
         </PubKeyValue>
         <AuthenticationVersion>X002</AuthenticationVersion>
     </AuthenticationPubKeyInfo>
@@ -20,7 +16,6 @@ xsi:schemaLocation="urn:org:ebics:H004 ebics_keymgmt_request_H004.xsd">
                 <ds:Modulus><%= @user.key('e002').public_modulus %></ds:Modulus>
                 <ds:Exponent><%= @user.key('e002').public_exponent %></ds:Exponent>
             </ds:RSAKeyValue>
-            <TimeStamp><%= @user.key('e002').created_at %></TimeStamp>
         </PubKeyValue>
         <EncryptionVersion>E002</EncryptionVersion>
     </EncryptionPubKeyInfo>

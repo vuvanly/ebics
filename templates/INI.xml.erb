@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ebicsUnsecuredRequest xmlns='urn:org:ebics:H004' Version="H004">
+<ebicsUnsecuredRequest xmlns="http://www.ebics.org/H003" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Revision="1" Version="H003" xsi:schemaLocation="http://www.ebics.org/H003 http://www.ebics.org/H003/ebics_keymgmt_request.xsd">
   <header authenticate="true">
     <static>
       <HostID><%= @bank.host_id%></HostID>
       <PartnerID><%= @user.partner_id %></PartnerID>
       <UserID><%= @user.member_id %></UserID>
-      <Product Language="de">SOFORTwohnen Wohnraumverwaltung</Product>
       <OrderDetails>
         <OrderType>INI</OrderType>
+        <OrderID>A025</OrderID>
         <OrderAttribute>DZNNN</OrderAttribute>
       </OrderDetails>
       <SecurityMedium>0000</SecurityMedium>
