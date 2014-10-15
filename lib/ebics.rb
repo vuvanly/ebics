@@ -90,7 +90,9 @@ module EBICS
     end
 
     def public_sha_256
-      public_key_string = "#{ @rsa.public_key.e.to_s(16) } #{ @rsa.public_key.n.to_s(16) }"
+      public_key_string = "#{ @rsa.public_key.e.to_s(16).downcase } #{ @rsa.public_key.n.to_s(16).downcase }"
+      public_key_string.gsub! /\A0/, ''
+      puts public_key_string
       public_key_string.encode!('US-ASCII')
       Digest::SHA256.hexdigest(public_key_string)
     end
